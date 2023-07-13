@@ -1,0 +1,48 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Attendance Recording</mat-card-title>
+    </mat-card-header>
+  
+    <mat-card-content>
+      <mat-form-field>
+        <mat-label>Class</mat-label>
+        <mat-select [(ngModel)]="selectedClass">
+          <mat-option *ngFor="let classOption of classOptions" [value]="classOption">
+            {{ classOption }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <mat-form-field>
+        <mat-label>Section</mat-label>
+        <mat-select [(ngModel)]="selectedSection">
+          <mat-option *ngFor="let sectionOption of sectionOptions" [value]="sectionOption">
+            {{ sectionOption }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <mat-form-field>
+        <mat-label>Date</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+  
+      <button mat-raised-button color="primary" (click)="search()">Search</button>
+    </mat-card-content>
+  
+    <mat-card-content *ngIf="showTable">
+      <ag-grid-angular
+        style="width: 100%; height: 400px;"
+        class="ag-theme-alpine"
+        [rowData]="studentData"
+        [columnDefs]="columnDefs"
+        [defaultColDef]="defaultColDef"
+        [gridOptions]="gridOptions"
+        (firstDataRendered)="onFirstDataRendered($event)"
+        (gridReady)="onGridReady($event)"
+      ></ag-grid-angular>
+    </mat-card-content>
+  </mat-card>
+  

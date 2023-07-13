@@ -1,0 +1,37 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav mode="side" [opened]="isSidenavOpen">
+      <div class="logo-container">
+        <!-- Place your logo image or text here -->
+        <img src="path_to_logo_image" alt="Logo">
+      </div>
+  
+      <mat-nav-list>
+        <a mat-list-item routerLink="/dashboard">
+          <mat-icon>dashboard</mat-icon>
+          <span>Dashboard</span>
+        </a>
+  
+        <a mat-list-item routerLink="/attendance-report">
+          <mat-icon>description</mat-icon>
+          <span>Attendance Report</span>
+        </a>
+      </mat-nav-list>
+  
+      <mat-divider></mat-divider>
+  
+      <button mat-button class="logout-button" (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-sidenav>
+  
+    <mat-sidenav-content>
+      <button mat-icon-button (click)="toggleSidenav()">
+        <mat-icon>{{ isSidenavOpen ? 'menu_open' : 'menu' }}</mat-icon>
+      </button>
+  
+      <!-- Place the content of your application here -->
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
