@@ -13,7 +13,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SideNavbarComponent } from './side-navbar/side-navbar.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -26,14 +25,20 @@ import { MatListModule } from '@angular/material/list';
 import { AttendanceRecordingComponent } from './attendance-recording/attendance-recording.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
+import { NavComponent } from './nav/nav.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { DashComponent } from './dash/dash.component';
+import { MatMenuModule } from '@angular/material/menu';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SideNavbarComponent,
     AttendanceRecordingComponent,
-    DashboardComponent
+    DashboardComponent,
+    NavComponent,
+    DashComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +59,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AgGridModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatGridListModule
+    MatGridListModule,
+    MatToolbarModule,
+    MatMenuModule
 
   ],
   providers: [],

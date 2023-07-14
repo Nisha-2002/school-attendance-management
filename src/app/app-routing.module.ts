@@ -4,6 +4,8 @@ import { LoginComponent } from './login/login.component';
 import { AttendanceRecordingComponent } from './attendance-recording/attendance-recording.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
+import { NavComponent } from './nav/nav.component';
+
 const routes: Routes = [{
   path:"login",
   component: LoginComponent
@@ -15,6 +17,10 @@ const routes: Routes = [{
 {
   path:"dashboard",
   component: DashboardComponent
+},
+{
+  path:"nav",
+  component: NavComponent
 }];
 
 @NgModule({

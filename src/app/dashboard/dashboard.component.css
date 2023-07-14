@@ -1,0 +1,53 @@
+.dashboard-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 24px;
+  }
+  
+  .dashboard-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    border-radius: 8px;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    margin: 10px;
+  }
+  
+  .card-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+  }
+  
+  .card-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .card-description {
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  .attendance-card {
+    background-color: #007bff;
+  }
+  
+  .absence-card {
+    background-color: #dc3545;
+  }
+  
+  .revenue-card {
+    background-color: #ffc107;
+  }
+  
+  .tasks-card {
+    background-color: #28a745;
+  }
+  
