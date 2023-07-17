@@ -9,11 +9,4 @@ mat-form-field {
   .ag-theme-alpine {
     height: 100%;
   }
-  /* .ag-header-cell-label .ag-header-cell-text {
-    white-space: normal !important;
-  }
-  .ag-header-cell-text {
-    overflow: visible;
-    text-overflow: unset;
-    white-space: normal;
- } */
+  
