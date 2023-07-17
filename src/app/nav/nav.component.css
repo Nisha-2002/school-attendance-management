@@ -15,3 +15,48 @@
   top: 0;
   z-index: 1;
 }
+.mat-toolbar{
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #00796B;
+  color: #333333;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+
+}
+mat-form-field {
+  width: 300px;
+  margin-top:20px ;
+}
+
+input {
+  width: 100%;
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.logo-image {
+  width: 80px;
+}
+
+.logout-button {
+  position: absolute;
+  width: 150px;
+  bottom: 16px;
+  left: 18px;
+}
+
+.navigation-list {
+  padding-top: 32px;
+}
+
+.nav-link-text {
+  margin-left: 8px;
+}

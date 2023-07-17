@@ -1,0 +1,52 @@
+.card-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px;
+    padding: auto;
+  }
+  
+  .card {
+    width: 200px;
+    height: 150px;
+    padding: 16px;
+    border-radius: 20px;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0px 2px 2px black;
+    transition: all 0.2s;
+  }
+  .card:hover{
+    scale: 1.1;
+    cursor: pointer;
+  }
+  
+  .card-total {
+ 
+  }
+  
+  .card-present {
+  
+  }
+  
+  .card-absent {
+   
+  }
+  
+  .card-percentage {
+    
+  }
+  
+  .number {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .label {
+    font-size: 16px;
+    margin: 8px 0 0 0;
+  }
+  

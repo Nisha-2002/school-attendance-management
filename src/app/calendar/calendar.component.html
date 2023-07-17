@@ -1,0 +1,8 @@
+<mat-card class="card">
+  <div class="calendar-container" fxLayout="row" fxLayoutAlign="center center">
+    <mat-calendar
+      [selected]="selectedDate"
+      (selectedChange)="onDateSelected($event)"
+    ></mat-calendar>
+  </div>
+</mat-card>

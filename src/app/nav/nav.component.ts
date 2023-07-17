@@ -16,4 +16,15 @@ export class NavComponent {
       map(result => result.matches),
       shareReplay()
     );
+
+    searchTerm = '';
+
+  onSearchInput(): void {
+    console.log('Search term:', this.searchTerm);
+    // Add your search logic here
+  }
+
+  clearSearch(): void {
+    this.searchTerm = '';
+  }
 }

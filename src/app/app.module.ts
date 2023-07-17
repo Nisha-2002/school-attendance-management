@@ -29,7 +29,14 @@ import { NavComponent } from './nav/nav.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { DashComponent } from './dash/dash.component';
 import { MatMenuModule } from '@angular/material/menu';
-
+import { ChartComponent } from './chart/chart.component';
+import { NumberCardsComponent } from './number-cards/number-cards.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { StudentCardComponent } from './student-card/student-card.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,7 +45,12 @@ import { MatMenuModule } from '@angular/material/menu';
     AttendanceRecordingComponent,
     DashboardComponent,
     NavComponent,
-    DashComponent
+    DashComponent,
+    ChartComponent,
+    NumberCardsComponent,
+    CalendarComponent,
+    SearchBarComponent,
+    StudentCardComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +73,10 @@ import { MatMenuModule } from '@angular/material/menu';
     MatNativeDateModule,
     MatGridListModule,
     MatToolbarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatAutocompleteModule,
+    MatExpansionModule,
+    HttpClientModule
 
   ],
   providers: [],
