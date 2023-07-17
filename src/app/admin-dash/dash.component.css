@@ -1,0 +1,24 @@
+.mat-h1{
+  margin: 8px;
+}
+
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  background-color: #F5F5F5;
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.dashboard-card-content {
+  height: 100%;
+  width: 100%;
+  
+}

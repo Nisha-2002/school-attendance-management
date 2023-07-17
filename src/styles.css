@@ -7,15 +7,3 @@ html, body { height: 100%; }
     padding: 0px;
 }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.red-class {
-    background-color: lightcoral !important ; /* Customize the background color for matched dates */
-    color: white;
-    border-radius: 50%; /* Customize the font color for matched dates */
-  }
-
-  .green-class{
-    background-color: greenyellow !important;
-    color: white;
-    border-radius: 50%;
-  }

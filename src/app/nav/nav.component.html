@@ -1,29 +1,57 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
-      <a mat-list-item href="#"><button mat-raised-button color="primary" style="width:100%;display:block"><mat-icon>exit_to_app</mat-icon>Logout</button></a>
-
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <div class="logo-container">
+      <img src="path-to-logo.png" alt="Logo" class="logo-image" />
+    </div>
+    <mat-nav-list class="navigation-list">
+      <a mat-list-item routerLink="/home">
+        <mat-icon>home</mat-icon>
+        <span class="nav-link-text">Home</span>
+      </a>
+      <a mat-list-item routerLink="/about">
+        <mat-icon>info</mat-icon>
+        <span class="nav-link-text">About</span>
+      </a>
+      <a mat-list-item routerLink="/contact">
+        <mat-icon>mail</mat-icon>
+        <span class="nav-link-text">Contact</span>
+      </a>
     </mat-nav-list>
+    <button mat-raised-button color="warn" class="logout-button">Logout</button>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar>
       <button
         type="button"
         aria-label="Toggle sidenav"
         mat-icon-button
         (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
+        *ngIf="isHandset$ | async"
+      >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>School Attendance Management</span>
+      <span class="nav-comp">
+        <mat-form-field appearance="fill">
+          <mat-icon matPrefix>search</mat-icon>
+          <input
+            matInput
+            [(ngModel)]="searchTerm"
+            placeholder="Search"
+            (input)="onSearchInput()"
+          />
+        </mat-form-field>
+      </span>
     </mat-toolbar>
-    <app-dash></app-dash>
-  </mat-sidenav-content>
+    <app-admin-dash></app-admin-dash>
+    <!-- <app-admin-dash></app-admin-dash> -->
+    
+    </mat-sidenav-content>
 </mat-sidenav-container>

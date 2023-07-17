@@ -5,14 +5,9 @@ import { AttendanceRecordingComponent } from './attendance-recording/attendance-
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { NavComponent } from './nav/nav.component';
+import { StudentCardComponent } from './student-card/student-card.component';
 
-const routes: Routes = [
-  {
-    path:"nav",
-    component: NavComponent
-  },
-  
-{
+const routes: Routes = [{
   path:"login",
   component: LoginComponent
 },
@@ -24,7 +19,10 @@ const routes: Routes = [
   path:"dashboard",
   component: DashboardComponent
 },
-];
+{
+  path:"nav",
+  component: NavComponent
+}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

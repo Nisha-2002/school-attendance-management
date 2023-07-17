@@ -1,0 +1,33 @@
+mat-card {
+  margin: 16px;
+  padding: 16px;
+}
+
+.mat-card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-field {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.form-field label {
+  flex-basis: 150px;
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+.form-field mat-icon {
+  margin-right: 8px;
+}
+
+.mat-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}

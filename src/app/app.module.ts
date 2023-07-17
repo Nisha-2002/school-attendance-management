@@ -14,7 +14,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { SkeletonModule } from "primeng/skeleton";
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
@@ -30,9 +29,15 @@ import { NavComponent } from './nav/nav.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { DashComponent } from './dash/dash.component';
 import { MatMenuModule } from '@angular/material/menu';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
-
+import { ChartComponent } from './chart/chart.component';
+import { NumberCardsComponent } from './number-cards/number-cards.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { StudentCardComponent } from './student-card/student-card.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { HttpClientModule } from '@angular/common/http';
+import { StudentDashComponent } from './student-dash/student-dash.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +46,13 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     AttendanceRecordingComponent,
     DashboardComponent,
     NavComponent,
-    DashComponent
+    DashComponent,
+    ChartComponent,
+    NumberCardsComponent,
+    CalendarComponent,
+    SearchBarComponent,
+    StudentCardComponent,
+    StudentDashComponent
   ],
   imports: [
     BrowserModule,
@@ -65,8 +76,9 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     MatGridListModule,
     MatToolbarModule,
     MatMenuModule,
-    HttpClientModule,
-    NgxChartsModule
+    MatAutocompleteModule,
+    MatExpansionModule,
+    HttpClientModule
 
   ],
   providers: [],

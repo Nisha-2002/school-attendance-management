@@ -1,0 +1,58 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ homeService.student.name }}</mat-card-title>
+    <mat-card-subtitle>{{ homeService.student.class }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="form-field">
+      <mat-icon>recent_actors</mat-icon>
+      <label>Roll Number:</label>
+      <span>{{ homeService.student.rollNumber }}</span>
+    </div>
+    <div class="form-field">
+      <mat-icon>person</mat-icon>
+      <label>Class Teacher:</label>
+      <span>{{ homeService.student.classTeacher }}</span>
+    </div>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon>description</mat-icon>
+          Attendance Report
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="attendance-stats">
+        <div class="attendance-row">
+          <div class="attendance-label">Present:</div>
+          <span class="attendance-value">{{
+            homeService.student.present
+          }}</span>
+        </div>
+        <div class="attendance-row">
+          <div class="attendance-label">Absent:</div>
+          <span class="attendance-value">{{ homeService.student.absent }}</span>
+        </div>
+        <div class="attendance-row">
+          <div class="attendance-label">Percentage:</div>
+          <span class="attendance-value">
+            {{ homeService.student.percentage }}
+          </span>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button color="primary" (click)="downloadReport()">
+      <mat-icon>cloud_download</mat-icon>
+      Download Report
+    </button>
+    <button mat-button color="primary" (click)="editAttendance()">
+      <mat-icon>edit</mat-icon>
+      Edit Attendance
+    </button>
+    <button mat-button color="primary" (click)="viewAttendanceReport()">
+      <mat-icon>visibility</mat-icon>
+      View Attendance Report
+    </button>
+  </mat-card-actions>
+</mat-card>
