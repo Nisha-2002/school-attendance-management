@@ -6,7 +6,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { NavComponent } from './nav/nav.component';
 
-const routes: Routes = [{
+const routes: Routes = [
+  {
+    path:"nav",
+    component: NavComponent
+  },
+  
+{
   path:"login",
   component: LoginComponent
 },
@@ -18,10 +24,7 @@ const routes: Routes = [{
   path:"dashboard",
   component: DashboardComponent
 },
-{
-  path:"nav",
-  component: NavComponent
-}];
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -1,11 +1,11 @@
 <div class="grid-container">
-  <h1 class="mat-h1">Dashboard</h1>
+  <h1 class="mat-h1">Hi, {{studentData.first_name}}</h1>
   <mat-grid-list cols="2" rowHeight="350px">
-    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+    <mat-grid-tile  colspan="2" rowspan="1">
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title>
-            {{card.title}}
+            Statistics
             <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
               <mat-icon>more_vert</mat-icon>
             </button>
@@ -16,12 +16,159 @@
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
-          <div>Card Content Here</div>
-          <div *ngIf="card.title=='Card 3'">
-            <app-attendance-recording></app-attendance-recording>
+      <div class="col-xs-4">
+        <mat-card class="total">
+          <mat-card-header>
+            <mat-card-title class="tothead"> Total Number of days</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <h2>{{studentData.days_present + studentData.days_absent}}</h2>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="present">
+          <mat-card-header>
+            <mat-card-title> Number of days Present</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <h2>{{studentData.days_present}}</h2>
+          </mat-card-content>
+        </mat-card>
+
+
+        <mat-card class="absent">
+          <mat-card-header>
+            <mat-card-title> Number of days Absent</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <h2>{{studentData.days_absent}}</h2>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="percent">
+          <mat-card-header>
+            <mat-card-title> Attendance Percentage</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <h2>{{studentData.percentage}}</h2>
+          </mat-card-content>
+        </mat-card>
+        
+      </div>
+      <div class="col-xs-4">
+        
+      </div>
+
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile  colspan="1" rowspan="1">
+      <mat-card class="dashboard-card-2">
+        <mat-card-header>
+          <mat-card-title>
+            Student Details
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div>
+            <mat-card class="detail_card">
+              <mat-card-content class="details">
+                
+                <div *ngIf="studentData">
+                  <h2>{{ studentData.first_name }} {{ studentData.middle_name }} {{ studentData.last_name }}</h2>
+                  <p>Roll Number: {{ studentData.class_roll_no }}</p>
+                  <p>Teacher Name: {{ studentData.teacherName }}</p>
+                  <p>Class ID: {{ studentData.class_ID }}</p>
+                  <p>Student ID: {{ studentData.student_id }}</p>
+                </div>
+            </mat-card-content>
+            </mat-card>
           </div>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
+
+    <mat-grid-tile  colspan="1" rowspan="1">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            Calendar <br>
+            Enter a date range to view your Attendance
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content-3">
+          <div class="left">
+          <mat-form-field>
+          <input matInput [matDatepicker]="startDatePicker" placeholder="Start Date" [(ngModel)]="startDate">
+          <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+          <mat-datepicker #startDatePicker></mat-datepicker>
+        </mat-form-field>
+
+        
+        <mat-form-field>
+          <input matInput [matDatepicker]="endDatePicker" placeholder="End Date" [(ngModel)]="endDate">
+          <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+          <mat-datepicker #endDatePicker></mat-datepicker>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="getData()">Get Data</button>
+      </div>
+
+        <div *ngIf="dateClass" class="right"><mat-calendar #calendar [dateClass]="dateClass"></mat-calendar></div>        
+          <!-- <mat-calendar [selected]="selectedDate" (selectedChange)="onSelect($event)"></mat-calendar> -->
+
+          
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+
+    <mat-grid-tile  colspan="2" rowspan="1">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            Graphs and Charts
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div>
+            <ngx-charts-pie-chart
+            [view]="[500, 300]"
+            [results]="single"
+            [gradient]="false"
+            [legend]="true"
+          ></ngx-charts-pie-chart>
+          <br>
+          <br>
+          Total Number of Days:{{studentData.days_present + studentData.days_absent}}
+          </div>
+          <br>
+          <br>
+          Total Number of Days:{{studentData.days_present + studentData.days_absent}}
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
   </mat-grid-list>
 </div>

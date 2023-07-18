@@ -14,6 +14,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { SkeletonModule } from "primeng/skeleton";
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
@@ -29,7 +30,8 @@ import { NavComponent } from './nav/nav.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { DashComponent } from './dash/dash.component';
 import { MatMenuModule } from '@angular/material/menu';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 @NgModule({
@@ -63,8 +65,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatGridListModule,
     MatToolbarModule,
     MatMenuModule,
-    HttpClientModule
-    
+    HttpClientModule,
+    NgxChartsModule
 
   ],
   providers: [],

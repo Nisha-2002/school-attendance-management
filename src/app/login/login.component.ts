@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from '../services/userService.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,13 @@ export class LoginComponent {
   loginForm: FormGroup;
   userTypes = ['parent', 'teacher', 'admin'];
 
-  constructor(private router: Router) {
+
+  userId: string;
+  setUserId() {
+    this.userService.setUserId(this.userId);
+  }
+
+  constructor(private router: Router,private userService: UserService) {
     this.loginForm = new FormGroup({
       userType: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),
