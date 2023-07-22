@@ -14,23 +14,31 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-
+import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatGridListModule } from '@angular/material/grid-list';
-
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatListModule } from '@angular/material/list';
-import { AttendanceRecordingComponent } from './attendance-recording/attendance-recording.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
-import { NavComponent } from './nav/nav.component';
+import { NavComponent } from './admin-dashboard/nav/nav.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { DashComponent } from './dash/dash.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { HttpClientModule } from '@angular/common/http';
-
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { AdminDashComponent } from './admin-dashboard/dash/dash.component';
+import { CalendarComponent } from './reusable-components/calendar/calendar.component';
+import { ChartComponent } from './reusable-components/chart/chart.component';
+import { NumberCardsComponent } from './reusable-components/number-cards/number-cards.component';
+import { SearchBarComponent } from './reusable-components/search-bar/search-bar.component';
+import { StudentCardComponent } from './reusable-components/student-card/student-card.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { AttendanceRecordingComponent } from './teacher-dashboard/attendance-recording/attendance-recording.component';
+import { StudentDashComponent } from './parent-dashboard/dash/dash.component';
+import { GlobalService } from './services/others/global.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +47,15 @@ import { HttpClientModule } from '@angular/common/http';
     AttendanceRecordingComponent,
     DashboardComponent,
     NavComponent,
-    DashComponent
+    DashComponent,
+    StudentDashComponent,
+    AdminDashComponent,
+    CalendarComponent,
+    ChartComponent,
+    NumberCardsComponent,
+    SearchBarComponent,
+    StudentCardComponent
+
   ],
   imports: [
     BrowserModule,
@@ -63,11 +79,15 @@ import { HttpClientModule } from '@angular/common/http';
     MatGridListModule,
     MatToolbarModule,
     MatMenuModule,
-    HttpClientModule
-    
+    HttpClientModule,
+    MatCheckboxModule,
+    NgxChartsModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    MatExpansionModule 
 
   ],
-  providers: [],
+  providers: [GlobalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

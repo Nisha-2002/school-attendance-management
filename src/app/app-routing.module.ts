@@ -1,17 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
-import { AttendanceRecordingComponent } from './attendance-recording/attendance-recording.component';
+import { AttendanceRecordingComponent } from './teacher-dashboard/attendance-recording/attendance-recording.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
-import { NavComponent } from './nav/nav.component';
-
+import { NavComponent } from './admin-dashboard/nav/nav.component';
+import { StudentDashComponent } from './parent-dashboard/dash/dash.component';
 const routes: Routes = [{
   path:"login",
   component: LoginComponent
 },
 {
-  path: "attendance",
+  path:"",
+  redirectTo: "login",
+  pathMatch:"full"
+},
+{
+  path: "teacher-dashboard",
   component: AttendanceRecordingComponent
 },
 {
@@ -20,6 +25,14 @@ const routes: Routes = [{
 },
 {
   path:"nav",
+  component: NavComponent
+},
+{
+  path:"student-dashboard",
+  component: StudentDashComponent
+},
+{
+  path:"admin-dashboard",
   component: NavComponent
 }];
 

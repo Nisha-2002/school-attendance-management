@@ -23,7 +23,7 @@ import {
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { DatePipe } from '@angular/common';
 import { first } from 'rxjs';
-import { HttpCallsService } from '../http-calls.service';
+import { HttpCallsService } from '../../services/http/http-calls.service';
 import { HttpResponse } from '@angular/common/http';
 
 export class Student {
@@ -163,7 +163,6 @@ checkboxRenderer(params: any) {
  
  };
  recordAttendance(){
-  console.log(this.gridApi)
   var columnName = 'name'; // Replace 'columnName' with the name of your desired column
   var colDefs = this.gridApi.getColumnDefs()
   colDefs?.forEach((col)=>{
@@ -185,20 +184,29 @@ checkboxRenderer(params: any) {
         console.log(convertedDate)
         if(convertedDate){
           let studentIds={
-            "studentId": columnData
+            "studentIDs": columnData
           }
           //let studentIDS = JSON.stringify(studentIds);
-          console.log(typeof(studentIds))
-          this.httpService.postAttendanceDay(convertedDate, this.selectedClass, studentIds).subscribe((res)=>{console.log(res)})
+          console.log(studentIds)
+          if(studentIds.studentIDs.length!=0){
+            console.log("Sending data")
+            this.httpService.postAttendanceDay(convertedDate, this.selectedClass, studentIds)
+            .subscribe((res)=>{console.log("Response:",res)})
+          
+          }
           //console.log(response.subscribe)
         }
         
       }
-      });
-    console.log("Absentees:",columnData)
+  
+      }
+      );
+     
+    //console.log("Absentees:",columnData)
     }
    
   })
+  alert("Recorded successfully")
  }
 
   search() {
@@ -231,7 +239,7 @@ checkboxRenderer(params: any) {
       
       this.columnDefs.push({ field: this.selectedDate, headerName: this.selectedDate,cellRenderer: this.checkboxRenderer })
          // { field: 'price' }
-      let students:any[]=this.studentData
+      //let students:any[]=this.studentData
       console.log("FIRST:",this.studentData)
       // students.forEach((student)=>{
       //   console.log("IN")
@@ -245,8 +253,18 @@ checkboxRenderer(params: any) {
         console.log("i am IN")
           console.log(i)
            let date:string=this.selectedDate
-           this.studentData[i][date]=false
-          console.log(this.studentData[i])
+           this.httpService.getAbsentDates(this.studentData[i].uid)
+            .subscribe((data)=>{
+              console.log(date in data)
+              if(date in data)
+              this.studentData[i][date]=false
+              else
+              this.studentData[i][date]=true
+              console.log("Fetched data:", this.studentData)
+
+            })
+           
+       //  this.studentData[i][date]=false
       }
         // for(const student of this.studentData){
         //   console.log("i am IN")
@@ -256,7 +274,9 @@ checkboxRenderer(params: any) {
         //   console.log(this.studentData[student])
   
         // }
-
+        
+        //this.gridApi.refreshCells()
+        //document.querySelector('#forceRefresh') as HTMLInputElement
 
       }
       else if(this.filterSelection=="By Week"){
@@ -266,13 +286,27 @@ checkboxRenderer(params: any) {
         //startDate= this.datepipe.transform(startDate, 'dd-MM-YYYY')
               
         var loop = new Date(startDate);
+        // this.httpService.getClassInfoDate("user6", this.selectedClass,
+        // this.datepipe.transform(startDate, 'dd-MM-YYYY'), endDate.toString())
+        // .subscribe((data)=>{
+        //   console.log("PLEASE", data)
+        // })
         while(loop <= endDate){
           let loop_date: any=this.datepipe.transform(loop, 'dd-MM-YYYY')
           this.columnDefs.push({ field: loop_date, headerName: loop_date,cellRenderer: this.checkboxRenderer })
           for(var student in this.studentData){
             console.log(student)
-            
-             this.studentData[student][loop_date]=false
+            this.httpService.getAbsentDates(this.studentData[student].uid)
+            .subscribe((data)=>{
+              console.log(loop_date in data)
+              if(loop_date in data)
+              this.studentData[student][loop_date]=false
+              else
+              this.studentData[student][loop_date]=true
+              console.log("Fetched data:", this.studentData)
+
+            })
+             //this.studentData[student][loop_date]=false
             console.log(this.studentData[student])
     
           }
@@ -293,6 +327,11 @@ checkboxRenderer(params: any) {
         console.log("Range", firstDay, lastDay)
               
         var loop = new Date(firstDay);
+        // this.httpService.getClassInfoDate("user6", this.selectedClass,
+        //             firstDay.toDateString(), lastDay.toDateString())
+        //             .subscribe((data)=>{
+        //               console.log("PLEASE", data)
+        //             })
         while(loop <= lastDay){
           let loop_date: any=this.datepipe.transform(loop, 'dd')
           this.columnDefs.push({ field: loop_date, headerName: loop_date,cellRenderer: this.checkboxRenderer })
@@ -315,7 +354,15 @@ checkboxRenderer(params: any) {
       // Perform search and get attendance data based on selected class, section, and date
       // Set showTable to true to display the table
       this.showTable = true;
+      if(this.gridApi){
+        console.log(this.gridApi.refreshCells())
+        console.log("Something is working")
+        //this.gridOptions.rowData(this.studentData)
+      }
+      // this.gridOptions.resetRowDataOnUpdate(this.studentData)
+      // this.gridOptions.api.setRowData(this.studentData)
 
+      //this.gridApi.setrow
 
         
       })

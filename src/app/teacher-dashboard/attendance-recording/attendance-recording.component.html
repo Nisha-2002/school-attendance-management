@@ -1,0 +1,73 @@
+{{this.studentData}}
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Attendance Recording</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <mat-form-field>
+      <mat-label>Class</mat-label>
+      <mat-select [(ngModel)]="selectedClass">
+        <mat-option *ngFor="let classOption of classOptions" [value]="classOption">
+          {{ classOption }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Filter By</mat-label>
+      <mat-select [(ngModel)]="filterSelection">
+        <mat-option *ngFor="let filter of filterOptions" [value]="filter">
+          {{ filter }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field *ngIf="filterSelection=='By Day'">
+    
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field *ngIf="filterSelection=='By Week'">
+      <mat-label>Enter a date range</mat-label>
+      <mat-date-range-input [formGroup]="range"  [rangePicker]="picker">
+        <input matStartDate formControlName="start" placeholder="Start date">
+        <input matEndDate formControlName="end" placeholder="End date">
+      </mat-date-range-input>
+      <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+    <mat-form-field *ngIf="filterSelection=='By Month'">
+      <mat-label>Month and Year</mat-label>
+      <input matInput [matDatepicker]="dp" [formControl]="selectedMonth">
+      <mat-hint>MM/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+      <mat-datepicker #dp
+                      startView="multi-year"
+                      (monthSelected)="setMonthAndYear($event, dp)"
+                      panelClass="example-month-picker">
+      </mat-datepicker>
+    </mat-form-field>
+    
+
+    <button mat-raised-button color="primary" (click)="search()">Search</button>
+  </mat-card-content>
+  
+  <mat-card-content *ngIf="showTable">
+      <ag-grid-angular
+      #forceRefresh
+      style="width: 100vw; height: 350px;"
+      class="ag-theme-alpine"
+      [rowData]="studentData"
+      [columnDefs]="columnDefs"
+      [defaultColDef]="defaultColDef"
+      (gridReady)="onGridReady($event)">
+  </ag-grid-angular>
+  </mat-card-content>
+</mat-card>
+<button mat-raised-button color="primary" (click)="recordAttendance()" >Record</button>
+<br>
+<button mat-raised-button color="primary" (click)="downloadReport()" >Download</button>
