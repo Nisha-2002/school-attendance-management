@@ -1,9 +1,11 @@
-import { ChangeDetectorRef, Component, ViewChild, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild, inject } from '@angular/core';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
 //import { Chart, Color } from 'chart.js/auto';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from 'src/app/services/others/userService.service';
+import { GlobalService } from 'src/app/services/others/global.service';
+import { Router } from '@angular/router';
 
 
 
@@ -31,11 +33,12 @@ interface StudentData {
 })
 
 
-export class StudentDashComponent {
-
+export class StudentDashComponent implements OnInit  {
+  
   single!: any[];
   dateClass!: (date: Date) => string;
-  constructor(private http: HttpClient,private userService:UserService,private cdr: ChangeDetectorRef) {
+ 
+  constructor(public gs:GlobalService, public router: Router,private http: HttpClient,private userService:UserService,private cdr: ChangeDetectorRef) {
     
   }
 
@@ -48,8 +51,12 @@ export class StudentDashComponent {
   studentData!: StudentData;
 
   // dateClass:(date: Date) => string;
-
+  
   ngOnInit() {
+    if(this.gs.user_PROFILE_IDENTIFIER!=4){
+      this.router.navigate(['/login']);
+    }
+    
     console.log(this.absentDays);
     
     this.userService.userId$.subscribe((userId)=>{

@@ -1,33 +1,22 @@
-mat-card {
-  margin: 16px;
-  padding: 16px;
+.dashboard-card-2 {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  background-color: rgb(243, 255, 255);
+  /* background-image: linear-gradient(rgb(230, 221, 221),rgb(227, 227, 172),rgb(226, 245, 197)); */
+
+}
+.detail_card{
+  background-color: rgb(240, 255, 218);
+
 }
 
-.mat-card-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-
-.form-field {
-  display: flex;
-  align-items: center;
-  margin-bottom: 8px;
-}
-
-.form-field label {
-  flex-basis: 150px;
-  font-weight: bold;
-  margin-left: 8px;
-}
-
-.form-field mat-icon {
-  margin-right: 8px;
-}
-
-.mat-card-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 8px;
+.details{
+  text-align: center;
+  font-size: 20px;
+  height: 220px;
+  /* margin: top 30px; */
+  /* box-shadow: salmon 2px; */
 }

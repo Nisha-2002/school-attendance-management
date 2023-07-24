@@ -36,9 +36,14 @@ import { NumberCardsComponent } from './reusable-components/number-cards/number-
 import { SearchBarComponent } from './reusable-components/search-bar/search-bar.component';
 import { StudentCardComponent } from './reusable-components/student-card/student-card.component';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { AttendanceRecordingComponent } from './teacher-dashboard/attendance-recording/attendance-recording.component';
+import { AttendanceRecordingComponent } from './attendance-recording/attendance-recording.component';
 import { StudentDashComponent } from './parent-dashboard/dash/dash.component';
 import { GlobalService } from './services/others/global.service';
+import { TeacherDashboardComponent } from './teacher-dashboard/teacher-dashboard.component';
+import { NavComponentTeacher } from './teacher-dashboard/nav/nav.component';
+import { TeacherNumberCardsComponent } from './teacher-dashboard/number-cards/number-cards.component';
+import { TeacherSearchBarComponent } from './teacher-dashboard/search-bar/search-bar.component';
+import { TeacherStudentCardComponent } from './teacher-dashboard/student-card/student-card.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +59,12 @@ import { GlobalService } from './services/others/global.service';
     ChartComponent,
     NumberCardsComponent,
     SearchBarComponent,
-    StudentCardComponent
+    StudentCardComponent,
+    TeacherDashboardComponent,
+    NavComponentTeacher,
+    TeacherNumberCardsComponent,
+    TeacherSearchBarComponent,
+    TeacherStudentCardComponent
 
   ],
   imports: [
@@ -84,8 +94,7 @@ import { GlobalService } from './services/others/global.service';
     NgxChartsModule,
     MatInputModule,
     MatAutocompleteModule,
-    MatExpansionModule 
-
+    MatExpansionModule
   ],
   providers: [GlobalService],
   bootstrap: [AppComponent]

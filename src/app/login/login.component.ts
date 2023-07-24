@@ -10,13 +10,12 @@ import { GlobalService } from '../services/others/global.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  responseDate:any;
+  responseData:any;
   loginForm: FormGroup;
   userTypes = ['parent', 'teacher', 'admin'];
 
   constructor(private globalService: GlobalService,private router: Router, private httpService:HttpCallsService) {
     this.loginForm = new FormGroup({
-      userType: new FormControl('', Validators.required),
       userID: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)
     });
@@ -24,30 +23,35 @@ export class LoginComponent {
 
   login() { 
     if (this.loginForm.valid) {
-      const userType = this.loginForm.get('userType')?.value;
-      const email = this.loginForm.get('userID')?.value;
+      const userid = this.loginForm.get('userID')?.value;
       const password = this.loginForm.get('password')?.value;
 
       // Perform authentication and validation here
       // Example: You can send a request to the server to verify credentials
       console.log("INSIDE")
       // Redirect to the respective user's dashboard
-      this.httpService.login(email, password)
+      this.httpService.login(userid, password)
         .subscribe(
           (resp)=>{
             console.log(resp)
-            this.responseDate=resp
-            this.globalService.USER_NAME=this.responseDate.USER_NAME;
-            this.globalService.user_IDENTIFIER=this.responseDate.USER_IDENTIFIER;
-            this.globalService.user_PROFILE_IDENTIFIER=this.responseDate.user_PROFILE_IDENTIFIER;
-            switch (this.responseDate.user_PROFILE_IDENTIFIER) {
-              case '4':
-                this.router.navigate(['/parent-dashboard']);
+            this.responseData=resp
+            if(!this.responseData){
+              alert("Invalid credentials. Please try again.")
+              return
+            }
+            this.globalService.USER_NAME=this.responseData.USER_NAME;
+            this.globalService.user_IDENTIFIER=this.responseData.USER_IDENTIFIER;
+            this.globalService.user_PROFILE_IDENTIFIER=this.responseData.user_PROFILE_IDENTIFIER;
+            console.log("STORED:",this.globalService.user_IDENTIFIER,
+                this.globalService.USER_NAME)
+            switch (this.responseData.user_PROFILE_IDENTIFIER) {
+              case 4:
+                this.router.navigate(['/student-dashboard']);
                 break;
-              case '3':
+              case 3:
                 this.router.navigate(['/teacher-dashboard']);
                 break;
-              case '2':
+              case 2:
                 this.router.navigate(['/admin-dashboard']);
                 break;
               default:

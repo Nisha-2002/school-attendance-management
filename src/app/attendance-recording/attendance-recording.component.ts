@@ -23,7 +23,7 @@ import {
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { DatePipe } from '@angular/common';
 import { first } from 'rxjs';
-import { HttpCallsService } from '../../services/http/http-calls.service';
+import { HttpCallsService } from '../services/http/http-calls.service';
 import { HttpResponse } from '@angular/common/http';
 
 export class Student {

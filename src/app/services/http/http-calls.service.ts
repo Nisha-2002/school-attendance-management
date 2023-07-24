@@ -49,15 +49,23 @@ export class HttpCallsService {
     adminAttendance(userid:String,date:String){
       return this.http.get(`http://localhost:8080/admin/attendance-summary?userId=${userid}&date=${date}`)
     }
+    teacherAttendance(userId:string,grade:number,date:string)
+    {
+      return this.http.get(`http://localhost:8080/admin/attendance-summary?userId=${userId}&grade=${grade}&date=${date}`)
+    }
     adminStudentList(userid:String){
       return this.http.get(`http://localhost:8080/admin/get-student-names?userId=${userid}`)
     }
+    teacherStudentList(userid:String,classId:string)
+    {
+      return this.http.get(`http://localhost:8080/getClassInfo/teacherId=${userid}&classId=${classId}`)
+    } 
    login(userId:String, password:String){
     let data:any={
       "USER_IDENTIFIER": userId,
       "PASSWORD": password
     }
-    return this.http.post(`http://localhost:8080/Validation}`,data)
+    return this.http.post(`http://localhost:8080/Validation`,data)
     }
 }
   

@@ -1,0 +1,64 @@
+<div class="grid-container">
+   
+    <h1 class="mat-h1">Dashboard<mat-form-field>
+        <mat-label>Class</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let classOption of classOptions" [value]="classOption" >
+            {{ classOption }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field></h1>
+    <mat-grid-list cols="2" rowHeight="350px">
+      <mat-grid-tile
+        *ngFor="let card of cards | async"
+        [colspan]="card.cols"
+        [rowspan]="card.rows"
+      >
+        <mat-card class="dashboard-card">
+          <mat-card-header>
+            <mat-card-title>
+              {{ card.title }}
+              <button
+                mat-icon-button
+                class="more-button"
+                [matMenuTriggerFor]="menu"
+                aria-label="Toggle menu"
+              >
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" xPosition="before">
+                <button mat-menu-item>Previous Attendance</button>
+                <button mat-menu-item>Todays Attendance</button>
+              </mat-menu>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content
+            class="dashboard-card-content"
+            *ngIf="card.title == 'Attendance Stats'"
+          >
+          <app-teacher-number-cards></app-teacher-number-cards>
+          </mat-card-content>
+          <mat-card-content
+            class="dashboard-card-content"
+            *ngIf="card.title == 'Card 4'"
+          >
+          
+          </mat-card-content>
+          <mat-card-content
+            class="dashboard-card-content"
+            *ngIf="card.title == 'Card 3'"
+          >
+           <app-teacher-student-card></app-teacher-student-card>
+          </mat-card-content>
+          <mat-card-content
+            class="dashboard-card-content"
+            *ngIf="card.title == 'Card 2'"
+          >
+          <app-teacher-search-bar></app-teacher-search-bar>
+            
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  

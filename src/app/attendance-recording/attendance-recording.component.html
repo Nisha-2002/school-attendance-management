@@ -64,7 +64,8 @@
       [rowData]="studentData"
       [columnDefs]="columnDefs"
       [defaultColDef]="defaultColDef"
-      (gridReady)="onGridReady($event)">
+      (gridReady)="onGridReady($event)"
+      [gridOptions]="gridOptions">
   </ag-grid-angular>
   </mat-card-content>
 </mat-card>

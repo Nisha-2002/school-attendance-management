@@ -6,13 +6,14 @@ import { GlobalService } from 'src/app/services/others/global.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-nav',
+  selector: 'app-nav-teacher',
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })
-export class NavComponent implements OnInit {
+export class NavComponentTeacher implements OnInit {
   ngOnInit(): void {
-    if(this.gs.user_PROFILE_IDENTIFIER!=2){
+    if(this.gs.user_PROFILE_IDENTIFIER!=3){
+      console.log("Problem")
       this.router.navigate(['/login']);
     }
   }

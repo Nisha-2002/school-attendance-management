@@ -8,5 +8,11 @@ export class GlobalService {
   user_PROFILE_IDENTIFIER: any;
   USER_NAME:any;
   user_IDENTIFIER:any;
+  destroyAll(){
+    this.USER_NAME="";
+    this.user_IDENTIFIER="";
+    this.user_PROFILE_IDENTIFIER="";
+            
+  }
   constructor() { }
 }
